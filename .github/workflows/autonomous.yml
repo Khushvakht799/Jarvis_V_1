@@ -66,11 +66,14 @@ jobs:
 
       - name: Run Jarvis container
         run: |
-          docker run --rm -v ${{ github.workspace }}/data:/app/data jarvis:latest python run_now.py
+          docker run --rm \
+            -v ${{ github.workspace }}/data:/app/data \
+            jarvis:latest python run_now.py
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jarvis_artifacts
-          path: data
+          path: data/
+
 
