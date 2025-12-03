@@ -1,0 +1,19 @@
+﻿services:
+  jarvis:
+    build: .
+    container_name: jarvis_v1
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped           # Автоперезапуск при сбоях
+    healthcheck:                     # Health-check для мониторинга
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    stdin_open: true
+    tty: true
+    command: python jarvis.py

@@ -59,3 +59,20 @@ jobs:
       - name: Test Jarvis
         run: |
           echo "✅ Тестовый запуск Jarvis выполнен"
+                
+      - name: Build Docker image      
+        run: |
+          docker build -t jarvis:latest .
+
+      - name: Run Jarvis container
+        run: |
+          docker run --rm jarvis:latest python run_now.py
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: jarvis_artifacts
+          path: |
+            data/patterns.json
+            data/embeddings/verb_embeddings_fixed.npy
+            data/embeddings/verb_vocab_fixed.pkl
