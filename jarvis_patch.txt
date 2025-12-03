@@ -1,0 +1,21 @@
+﻿# В начале файла jarvis.py замени импорты:
+
+# БЫЛО:
+from core.interpreter import EmbeddingInterpreter
+from core.executor import CodeExecutor
+from core.error_handler import ErrorHandler
+from utils.file_manager import ensure_data_files
+
+# СТАЛО:
+try:
+    # Сначала пробуем исправленную версию
+    from core.interpreter_fixed import EmbeddingInterpreter
+except ImportError:
+    # Fallback на оригинальную
+    from core.interpreter import EmbeddingInterpreter
+
+from core.executor import CodeExecutor
+from utils.file_manager import ensure_data_files
+
+# Удали или закомментируй error_handler если его нет
+# from core.error_handler import ErrorHandler

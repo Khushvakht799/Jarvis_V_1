@@ -1,22 +1,42 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Jarvis - AI Interface
 """
 
+
 import sys
 import os
-sys.path.insert(0, os.path.dirname(__file__))
+import traceback  # ← ДОБАВЬТЕ ЭТО
 
-print("рџ¤– Р—Р°РїСѓСЃРє Jarvis...")
+# Добавляем текущую папку в путь
+current_dir = os.path.dirname(__file__)
+sys.path.insert(0, current_dir)
 
-# РџС‹С‚Р°РµРјСЃСЏ РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ РјРѕРґСѓР»Рё
+print("🤖 Запуск Jarvis...")
+
+# Проверяем наличие файлов
+print("🔍 Проверка файлов...")
+required = [
+    ("config.py", os.path.join(current_dir, "config.py")),
+    ("core/interpreter.py", os.path.join(current_dir, "core", "interpreter.py")),
+    ("core/executor.py", os.path.join(current_dir, "core", "executor.py")),
+    ("utils/file_manager.py", os.path.join(current_dir, "utils", "file_manager.py"))
+]
+
+for name, path in required:
+    if os.path.exists(path):
+        print(f"✅ {name}")
+    else:
+        print(f"❌ {name} - отсутствует")
+
+# Пытаемся импортировать модули
 try:
     from core.interpreter import EmbeddingInterpreter
     from core.executor import CodeExecutor
     from utils.file_manager import ensure_data_files
     import config
     
-    print("вњ… РњРѕРґСѓР»Рё Р·Р°РіСЂСѓР¶РµРЅС‹")
+    print("✅ Модули загружены")
     
     # РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
     ensure_data_files()

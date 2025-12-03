@@ -1,0 +1,151 @@
+{
+  "patterns": [
+    {
+      "id": "hello_world",
+      "triggers": ["привет", "здравствуй", "hello", "hi", "start", "старт"],
+      "template": "result = '\u041f\u0440\u0438\u0432\u0435\u0442! \u042f Jarvis. \u0413\u043e\u0442\u043e\u0432 \u043a \u0440\u0430\u0431\u043e\u0442\u0435.'",
+      "variables": {},
+      "category": "system"
+    },
+    {
+      "id": "create_list",
+      "triggers": ["создай список", "сделай массив", "создай лист", "create list", "make array", "generate list"],
+      "template": "result = list(range({n}))",
+      "variables": {
+        "n": {
+          "type": "int",
+          "default": 5,
+          "description": "Количество элементов"
+        }
+      },
+      "category": "data_structures"
+    },
+    {
+      "id": "calculate_sum",
+      "triggers": ["посчитай сумму", "вычисли сумму", "сложи числа", "calculate sum", "add numbers"],
+      "template": "result = sum([{numbers}])",
+      "variables": {
+        "numbers": {
+          "type": "list[int]",
+          "default": [1, 2, 3],
+          "description": "Числа для сложения"
+        }
+      },
+      "category": "math"
+    },
+    {
+      "id": "show_time",
+      "triggers": ["покажи время", "который час", "текущее время", "show time", "what time"],
+      "template": "from datetime import datetime\nresult = datetime.now().strftime('%H:%M:%S')",
+      "variables": {},
+      "category": "system"
+    },
+    {
+      "id": "generate_random",
+      "triggers": ["случайное число", "рандомное число", "random number", "generate random"],
+      "template": "import random\nresult = random.randint({start}, {end})",
+      "variables": {
+        "start": {
+          "type": "int",
+          "default": 1,
+          "description": "Начало диапазона"
+        },
+        "end": {
+          "type": "int",
+          "default": 100,
+          "description": "Конец диапазона"
+        }
+      },
+      "category": "math"
+    },
+    {
+      "id": "reverse_string",
+      "triggers": ["переверни строку", "обратная строка", "reverse string", "invert text"],
+      "template": "result = '{text}'[::-1]",
+      "variables": {
+        "text": {
+          "type": "string",
+          "default": "hello",
+          "description": "Текст для переворота"
+        }
+      },
+      "category": "text"
+    },
+    {
+      "id": "count_words",
+      "triggers": ["посчитай слова", "количество слов", "count words", "word count"],
+      "template": "result = len('{text}'.split())",
+      "variables": {
+        "text": {
+          "type": "string",
+          "default": "hello world",
+          "description": "Текст для анализа"
+        }
+      },
+      "category": "text"
+    },
+    {
+      "id": "create_dict",
+      "triggers": ["создай словарь", "make dictionary", "create dict"],
+      "template": "result = {{'key1': 'value1', 'key2': 'value2'}}",
+      "variables": {},
+      "category": "data_structures"
+    },
+    {
+      "id": "fibonacci",
+      "triggers": ["числа фибоначчи", "фибоначчи", "fibonacci sequence"],
+      "template": "def fib(n):\n    a, b = 0, 1\n    result = []\n    for _ in range(n):\n        result.append(a)\n        a, b = b, a + b\n    return result\nresult = fib({n})",
+      "variables": {
+        "n": {
+          "type": "int",
+          "default": 10,
+          "description": "Количество чисел"
+        }
+      },
+      "category": "math"
+    },
+    {
+      "id": "factorial",
+      "triggers": ["факториал числа", "factorial", "вычисли факториал"],
+      "template": "import math\nresult = math.factorial({n})",
+      "variables": {
+        "n": {
+          "type": "int",
+          "default": 5,
+          "description": "Число для факториала"
+        }
+      },
+      "category": "math"
+    },
+    {
+      "id": "check_prime",
+      "triggers": ["простое число", "is prime", "проверь простое число"],
+      "template": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\nresult = is_prime({n})",
+      "variables": {
+        "n": {
+          "type": "int",
+          "default": 7,
+          "description": "Число для проверки"
+        }
+      },
+      "category": "math"
+    },
+    {
+      "id": "sort_list",
+      "triggers": ["отсортируй список", "sort list", "sort numbers"],
+      "template": "result = sorted([{numbers}])",
+      "variables": {
+        "numbers": {
+          "type": "list[int]",
+          "default": [5, 2, 8, 1, 9],
+          "description": "Числа для сортировки"
+        }
+      },
+      "category": "data_structures"
+    }
+  ],
+  "statistics": {
+    "total_uses": 0,
+    "last_updated": "2024-12-02"
+  }
+}

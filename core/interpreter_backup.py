@@ -55,4 +55,3 @@ class EmbeddingInterpreter:
     
     def get_vocab_size(self):
         return self.embeddings.get_vocab_size()
-
