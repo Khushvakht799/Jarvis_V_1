@@ -1,0 +1,84 @@
+Глагол	Интент	Параметры	Тип действия	Машинный код действия	Пример
+напиши	write	text	text_output	ACTION.WRITE(text)	напиши Hello
+прочитай	read	text	text_input	ACTION.READ(text)	прочитай файл.txt
+удали	delete	file	file_op	ACTION.DELETE(file)	удали test.txt
+создай	create	file	file_op	ACTION.CREATE(file)	создай report.txt
+открой	open	file	file_op	ACTION.OPEN(file)	открой config.json
+закрой	close	file	file_op	ACTION.CLOSE(file)	закрой окно
+сохрани	save	file	file_op	ACTION.SAVE(file)	сохрани документ.docx
+копируй	copy	file	file_op	ACTION.COPY(file)	копируй image.png
+вставь	paste	file	file_op	ACTION.PASTE(file)	вставь в папку D:\
+перемести	move	file	file_op	ACTION.MOVE(file)	перемести report.doc в backup
+скачай	download	url,path	net_op	ACTION.DOWNLOAD(url, path)	скачай http://example.com
+загрузи	upload	file,url	net_op	ACTION.UPLOAD(file, url)	загрузи data.csv на сервер
+найди	find	text,path	search_op	ACTION.FIND(text, path)	найди "error" в logs/
+замени	replace	text,replacement	text_op	ACTION.REPLACE(text, replacement)	замени "foo" на "bar"
+отправь	send,email,text	net_op	ACTION.SEND(email, text)	отправь отчет@mail.com
+получи	receive,email	text_op	ACTION.RECEIVE(email)	получи письмо
+включи	switch_on	device,param	device_op	ACTION.SWITCH_ON(device)	включи свет
+выключи	switch_off	device,param	device_op	ACTION.SWITCH_OFF(device)	выключи свет
+запусти	run,execute	command	process_op	ACTION.RUN(command)	запусти script.py
+останови	stop,terminate	command	process_op	ACTION.STOP(command)	останови process.exe
+перезапусти	restart	command	process_op	ACTION.RESTART(command)	перезапусти сервер
+создай_папку	mkdir	path,file_op	ACTION.MKDIR(path)	создай_папку logs
+удали_папку	rmdir	path,file_op	ACTION.RMDIR(path)	удали_папку temp
+архивируй	zip	path,file_op	ACTION.ZIP(path)	архивируй logs/
+разархивируй	unzip	path,file_op	ACTION.UNZIP(path)	разархивируй archive.zip
+проверить_существование	check_exists	path,file_op	ACTION.CHECK_EXISTS(path)	проверить_существование config.json
+вывести	print	text,text_output	ACTION.PRINT(text)	вывести "Готово"
+открыть_браузер	open_browser	url,options	net_op	ACTION.OPEN_BROWSER(url)	открыть_браузер https://example.com
+закрыть_браузер	close_browser	url,options	net_op	ACTION.CLOSE_BROWSER(url)	закрыть_браузер
+создать_таблицу	create_table	schema,name	db_op	ACTION.CREATE_TABLE(schema,name)	создать_таблицу users
+удалить_таблицу	drop_table	name,db	db_op	ACTION.DROP_TABLE(name)	удалить_таблицу logs
+вставить_в_таблицу	insert_table	table,data	db_op	ACTION.INSERT_TABLE(table,data)	вставить_в_таблицу users
+обновить_таблицу	update_table	table,data	db_op	ACTION.UPDATE_TABLE(table,data)	обновить_таблицу logs
+выбрать_из_таблицы	select_table	query,table	db_op	ACTION.SELECT_TABLE(query,table)	выбрать_из_таблицы users
+создай_файл	create_file	path,file_op	ACTION.CREATE_FILE(path)	создай_файл config.ini
+удали_файл	delete_file	path,file_op	ACTION.DELETE_FILE(path)	удали_файл temp.log
+копировать_путь	copy_path	path,file_op	ACTION.COPY_PATH(path)	копировать_путь C:\docs
+переместить_путь	move_path	src,dest	file_op	ACTION.MOVE_PATH(src,dest)	переместить_путь C:\temp D:\backup
+открыть_папку	open_folder	path,file_op	ACTION.OPEN_FOLDER(path)	открыть_папку logs
+закрыть_папку	close_folder	path,file_op	ACTION.CLOSE_FOLDER(path)	закрыть_папку temp
+скачать_файл	download_file	url,path	net_op	ACTION.DOWNLOAD_FILE(url,path)	скачать_файл https://example.com/file.zip
+загрузить_файл	upload_file	file,url	net_op	ACTION.UPLOAD_FILE(file,url)	загрузить_файл data.csv
+создать_пользователя	create_user	name,role	db_op	ACTION.CREATE_USER(name,role)	создать_пользователя admin
+удалить_пользователя	delete_user	name,db_op	ACTION.DELETE_USER(name)	удалить_пользователя guest
+обновить_пользователя	update_user	name,role	db_op	ACTION.UPDATE_USER(name,role)	обновить_пользователя admin
+получить_пользователя	get_user	name,db_op	ACTION.GET_USER(name)	получить_пользователя guest
+создать_группу	create_group	name,db_op	ACTION.CREATE_GROUP(name)	создать_группу devs
+удалить_группу	delete_group	name,db_op	ACTION.DELETE_GROUP(name)	удалить_группу testers
+добавить_в_группу	add_to_group	user,group,db_op	ACTION.ADD_TO_GROUP(user,group)	добавить_в_группу admin devs
+удалить_из_группы	remove_from_group	user,group,db_op	ACTION.REMOVE_FROM_GROUP(user,group)	удалить_из_группы guest testers
+создать_сессию	create_session	name,db_op	ACTION.CREATE_SESSION(name)	создать_сессию work
+закрыть_сессию	close_session	name,db_op	ACTION.CLOSE_SESSION(name)	закрыть_сессию work
+выполнить_скрипт	run_script	path,params	process_op	ACTION.RUN_SCRIPT(path,params)	выполнить_скрипт install.py
+остановить_скрипт	stop_script	path,process_op	ACTION.STOP_SCRIPT(path)	остановить_скрипт update.py
+перезапустить_скрипт	restart_script	path,process_op	ACTION.RESTART_SCRIPT(path)	перезапустить_скрипт service.py
+прочитать_лог	read_log	path,file_op	ACTION.READ_LOG(path)	прочитать_лог app.log
+очистить_лог	clear_log	path,file_op	ACTION.CLEAR_LOG(path)	очистить_лог temp.log
+создать_снимок	screenshot	path,file_op	ACTION.SCREENSHOT(path)	создать_снимок screen.png
+открыть_снимок	open_screenshot	path,file_op	ACTION.OPEN_SCREENSHOT(path)	открыть_снимок screen.png
+вставить_снимок	paste_screenshot	path,file_op	ACTION.PASTE_SCREENSHOT(path)	вставить_снимок в docs
+запустить_демо	run_demo	path,params	process_op	ACTION.RUN_DEMO(path,params)	запустить_демо demo.py
+остановить_демо	stop_demo	path,process_op	ACTION.STOP_DEMO(path)	остановить_демо demo.py
+создать_бэкап	create_backup	src,dest,file_op	ACTION.CREATE_BACKUP(src,dest)	создать_бэкап C:\data D:\backup
+восстановить_бэкап	restore_backup	src,dest,file_op	ACTION.RESTORE_BACKUP(src,dest)	восстановить_бэкап D:\backup C:\data
+проверить_бэкап	check_backup	src,dest,file_op	ACTION.CHECK_BACKUP(src,dest)	проверить_бэкап D:\backup
+синхронизировать	sync	src,dest,file_op	ACTION.SYNC(src,dest)	синхронизировать C:\data D:\remote
+обновить_пакет	update_package	name,version,net_op	ACTION.UPDATE_PACKAGE(name,version)	обновить_пакет numpy 1.23
+установить_пакет	install_package	name,version,net_op	ACTION.INSTALL_PACKAGE(name,version)	установить_пакет pandas 2.0
+удалить_пакет	uninstall_package	name,net_op	ACTION.UNINSTALL_PACKAGE(name)	удалить_пакет requests
+проверить_пакет	check_package	name,net_op	ACTION.CHECK_PACKAGE(name)	проверить_пакет numpy
+активировать_виртуальное_окружение	activate_venv	path,params,env_op	ACTION.ACTIVATE_VENV(path)	активировать_виртуальное_окружение venv
+деактивировать_виртуальное_окружение	deactivate_venv	env_op	ACTION.DEACTIVATE_VENV()	деактивировать_виртуальное_окружение
+создать_проект	create_project	path,name,file_op	ACTION.CREATE_PROJECT(path,name)	создать_проект MyApp
+открыть_проект	open_project	path,file_op	ACTION.OPEN_PROJECT(path)	открыть_проект MyApp
+закрыть_проект	close_project	path,file_op	ACTION.CLOSE_PROJECT(path)	закрыть_проект MyApp
+собрать_проект	build_project	path,file_op	ACTION.BUILD_PROJECT(path)	собрать_проект MyApp
+запустить_проект	run_project	path,file_op	ACTION.RUN_PROJECT(path)	запустить_проект MyApp
+тестировать_проект	test_project	path,file_op	ACTION.TEST_PROJECT(path)	тестировать_проект MyApp
+рефакторить_проект	refactor_project	path,file_op	ACTION.REFACTOR_PROJECT(path)	рефакторить_проект MyApp
+создать_отчет	create_report	path,file_op	ACTION.CREATE_REPORT(path)	создать_отчет report.pdf
+открыть_отчет	open_report	path,file_op	ACTION.OPEN_REPORT(path)	открыть_отчет report.pdf
+закрыть_отчет	close_report	path,file_op	ACTION.CLOSE_REPORT(path)	закрыть_отчет report.pdf
+вывести_отчет	print_report	path,file_op	ACTION.PRINT_REPORT(path)	вывести_отчет report.pdf
