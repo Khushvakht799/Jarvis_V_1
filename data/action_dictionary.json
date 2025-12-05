@@ -1,0 +1,21 @@
+{
+  "version": "2.0",
+  "actions": [
+    {
+      "verb": "напиши",
+      "intent": "write",
+      "params": ["текст"],
+      "action_code": "write_action",
+      "examples": ["напиши привет мир"],
+      "description": "Записывает текст в файл"
+    },
+    {
+      "verb": "посчитай",
+      "intent": "calculate",
+      "params": ["выражение"],
+      "action_code": "calculate_action", 
+      "examples": ["посчитай 2+2", "посчитай 10*5"],
+      "description": "Выполняет вычисления"
+    }
+  ]
+}

@@ -1,55 +1,54 @@
-﻿#!/usr/bin/env python3
-"""
-Jarvis - AI Interface
-"""
+# jarvis.py (обновлённая версия)
+from verb_interpreter import VerbInterpreter
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(__file__))
-
-print("рџ¤– Р—Р°РїСѓСЃРє Jarvis...")
-
-# РџС‹С‚Р°РµРјСЃСЏ РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ РјРѕРґСѓР»Рё
-try:
-    from core.interpreter import EmbeddingInterpreter
-    from core.executor import CodeExecutor
-    from utils.file_manager import ensure_data_files
-    import config
+def main():
+    print("=" * 60)
+    print("🤖 JARVIS - Python Knowledge Assistant")
+    print("💡 Знает о builtins, модулях и паттернах Python")
+    print("=" * 60)
     
-    print("вњ… РњРѕРґСѓР»Рё Р·Р°РіСЂСѓР¶РµРЅС‹")
+    interpreter = VerbInterpreter("data/action_dictionary.json")
     
-    # РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
-    ensure_data_files()
-    interpreter = EmbeddingInterpreter()
-    executor = CodeExecutor(safe_mode=True)
+    print("\n✨ **Доступные команды:**")
+    print("  1. Пользовательские команды:")
+    print("     • напиши [текст] - записать в файл")
+    print("     • посчитай [выражение] - вычислить")
+    print("")
+    print("  2. Поиск в Python:")
+    print("     • 'что ты умеешь' - возможности Python")
+    print("     • 'найди в python [запрос]' - поиск функций")
+    print("     • 'как сделать [задача]' - получить код")
+    print("")
+    print("  3. Управление словарём:")
+    print("     • 'где словарь' - путь к файлу команд")
+    print("     • 'обновить словарь' - добавить новые команды")
+    print("")
+    print("💬 Попробуйте: 'найди в python работа с файлами'")
+    print("=" * 60)
     
-    print(f"вњ… РЎР»РѕРІР°СЂСЊ: {interpreter.get_vocab_size()} РіР»Р°РіРѕР»РѕРІ")
-    
-    # РРЅС‚РµСЂР°РєС‚РёРІРЅС‹Р№ СЂРµР¶РёРј
     while True:
-        cmd = input("\nJarvis> ").strip()
-        if cmd.lower() == 'exit':
-            break
-        
-        result = interpreter.interpret(cmd)
-        if result:
-            template, vars, score = result
-            print(f"вњ… ({score:.1%}): {template}")
+        try:
+            user_input = input("\n👤 Вы: ").strip()
             
-            # РџРѕРґСЃС‚Р°РІР»СЏРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ
-            code = template
-            for k, v in vars.items():
-                code = code.replace(f"{{{k}}}", str(v))
+            if user_input.lower() in ['выход', 'exit', 'quit', 'q']:
+                print("\n👋 До свидания!")
+                break
             
-            # Р’С‹РїРѕР»РЅСЏРµРј
-            success, output, res = executor.execute(code)
-            if success:
-                print(f"Р РµР·СѓР»СЊС‚Р°С‚: {res}")
+            if not user_input:
+                continue
+            
+            result = interpreter.process(user_input)
+            
+            if result["success"]:
+                print(f"\n🤖 Jarvis: {result['message']}")
             else:
-                print(f"РћС€РёР±РєР°: {output}")
-        else:
-            print("вќЊ РќРµ СЂР°СЃРїРѕР·РЅР°РЅРѕ")
-            
-except ImportError as e:
-    print(f"вќЊ РћС€РёР±РєР° РёРјРїРѕСЂС‚Р°: {e}")
-    print("РЎРѕР·РґР°Р№С‚Рµ РЅРµРґРѕСЃС‚Р°СЋС‰РёРµ РјРѕРґСѓР»Рё")
+                print(f"\n🤖 Jarvis: {result['message']}")
+                
+        except KeyboardInterrupt:
+            print("\n\n⏹️  Прервано")
+            break
+        except Exception as e:
+            print(f"\n🔥 Ошибка: {e}")
+
+if __name__ == "__main__":
+    main()
